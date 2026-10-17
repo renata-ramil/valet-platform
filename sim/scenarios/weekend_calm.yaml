@@ -1,0 +1,22 @@
+# A quiet weekend: few commuters, a thin steady trickle of on-demand requests,
+# no scheduled peak.
+name: weekend_calm
+duration_hours: 24
+building:
+  num_lanes: 14
+  max_depth: 8
+  num_valets: 3
+  background_occupancy_fraction: 0.15
+commuters:
+  count: 5
+  ready_by_hour: 10.0
+  ready_by_jitter_minutes_std: 30
+  skip_probability: 0.2
+on_demand:
+  base_rate_per_hour: 0.4
+  peak_multiplier: 1.3
+  peak_hours: [11, 15]
+evening_event:
+  enabled: false
+valet_absence:
+  probability: 0.0

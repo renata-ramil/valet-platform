@@ -1,0 +1,26 @@
+# A typical weekday: a commuter wave around 8 AM plus a steady trickle of
+# on-demand requests. This is the scenario the resume-bullet relocation and
+# wait numbers come from.
+name: weekday_peak
+duration_hours: 24
+building:
+  num_lanes: 14
+  max_depth: 8
+  num_valets: 6
+  # fraction of the garage filled with other residents' cars that make no
+  # request today, sized so background + today's requests land near the
+  # ~60 cars in the seeded Harbor Tower population
+  background_occupancy_fraction: 0.1
+commuters:
+  count: 40
+  ready_by_hour: 8.0
+  ready_by_jitter_minutes_std: 10
+  skip_probability: 0.05
+on_demand:
+  base_rate_per_hour: 0.5
+  peak_multiplier: 2.0
+  peak_hours: [7, 10]
+evening_event:
+  enabled: false
+valet_absence:
+  probability: 0.0

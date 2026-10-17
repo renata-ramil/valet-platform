@@ -1,0 +1,7 @@
+Audit tamper demonstration
+
+Seeded a request with 3 events (created, assigned, delivered) then
+modified the middle event's payload with a raw UPDATE, bypassing the
+append-only trigger the way a privileged database attacker could.
+
+make audit output: BROKEN CHAIN: Hash chain broken for d1eb5ddc-9e24-439a-995a-b9237783df75 at event fc602434-65c0-4f2f-abdf-f8180a324879 (position 1): stored hash does not match its type, payload and prev_hash (tampered content)

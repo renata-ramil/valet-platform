@@ -1,0 +1,47 @@
+html,
+body {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background: #0a1226;
+  display: flex;
+  justify-content: center;
+}
+
+#root {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+/* the .phone frame is a device mockup for desktop browsing; on an actual
+   phone viewport it should fill the real screen instead of being a small
+   simulated device floating in a letterboxed page */
+@media (max-width: 480px) {
+  body {
+    display: block;
+  }
+
+  #root {
+    display: block;
+    width: 100%;
+  }
+
+  .phone {
+    width: 100vw;
+    height: 100dvh;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}

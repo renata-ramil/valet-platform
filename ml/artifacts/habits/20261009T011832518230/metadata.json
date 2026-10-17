@@ -1,0 +1,11 @@
+{
+  "model_type": "habits",
+  "version": "20261009T011832518230",
+  "created_at": "2026-10-09T01:18:32.519029+00:00",
+  "training_data_hash": "1c482b517f73d65f",
+  "metrics": {
+    "precision_at_12_weeks": 1.0,
+    "recall_at_12_weeks": 0.9666666666666667
+  },
+  "calibrated": true
+}

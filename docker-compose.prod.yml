@@ -1,0 +1,73 @@
+# Production stack: Postgres, the API, the static frontend, and a Caddy
+# edge proxy that terminates TLS automatically (Let's Encrypt) for two
+# subdomains. Not deployed yet; see docs/runbook.md for the
+# steps and docs/KNOWN-ISSUES.md for what has and has not been verified against
+# a real Docker host.
+#
+# Usage:
+#   cp .env.prod.example .env.prod   # fill in real values first
+#   docker compose -f docker-compose.prod.yml --env-file .env.prod up -d --build
+
+services:
+  postgres:
+    image: postgres:16
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: ${POSTGRES_USER:-valet}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:?set a real password in .env.prod}
+      POSTGRES_DB: ${POSTGRES_DB:-valet}
+    volumes:
+      - valet_postgres_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ${POSTGRES_USER:-valet}"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+
+  backend:
+    build:
+      context: .
+      dockerfile: backend/Dockerfile
+    restart: unless-stopped
+    depends_on:
+      postgres:
+        condition: service_healthy
+    environment:
+      APP_ENV: production
+      SECRET_KEY: ${SECRET_KEY:?set a real random secret in .env.prod}
+      DATABASE_URL: postgresql+psycopg://${POSTGRES_USER:-valet}:${POSTGRES_PASSWORD}@postgres:5432/${POSTGRES_DB:-valet}
+      CORS_ORIGINS: https://${DOMAIN}
+      TWILIO_AUTH_TOKEN: ${TWILIO_AUTH_TOKEN:-}
+      ANTHROPIC_API_KEY: ${ANTHROPIC_API_KEY:-}
+      SUPPORT_MODEL: ${SUPPORT_MODEL:-}
+
+  frontend:
+    build:
+      context: .
+      dockerfile: frontend/Dockerfile
+      args:
+        VITE_API_BASE_URL: https://${API_DOMAIN}
+    restart: unless-stopped
+
+  edge:
+    image: caddy:2-alpine
+    restart: unless-stopped
+    depends_on:
+      - frontend
+      - backend
+    ports:
+      - "80:80"
+      - "443:443"
+    environment:
+      DOMAIN: ${DOMAIN:?set the frontend domain in .env.prod}
+      API_DOMAIN: ${API_DOMAIN:?set the API domain in .env.prod}
+      ACME_EMAIL: ${ACME_EMAIL:?set an email for Let's Encrypt in .env.prod}
+    volumes:
+      - ./deploy/Caddyfile:/etc/caddy/Caddyfile:ro
+      - caddy_data:/data
+      - caddy_config:/config
+
+volumes:
+  valet_postgres_data:
+  caddy_data:
+  caddy_config:

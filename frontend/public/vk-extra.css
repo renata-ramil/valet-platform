@@ -1,0 +1,185 @@
+/* Per-screen local styles from the design's screens, collected
+   here since the real app is one stylesheet, not one HTML document per
+   screen. Declarations are copied verbatim from the screens that use them
+   (R02, R08-R10, R13-R15, R20, V02, M01-M07, D02-D04). Where two screens
+   used the same class with different values (.btn.sm padding), the value
+   from the screen with more on-screen instances of it was kept; the
+   difference is one spacing token (12px vs 16px), both on the approved
+   scale. */
+
+.seg2 { height: 8px; border-radius: var(--r1); flex: 1; background: var(--sf3); }
+.seg2.on { background: var(--ink); }
+
+.dr { min-height: 48px; }
+.dr + .dr { border-top: 1px solid var(--line); }
+
+.pw { position: absolute; left: 0; right: 0; top: 64px; bottom: 96px; padding: var(--sp-2) var(--sp-3) 0; display: flex; flex-direction: column; gap: var(--sp-4); overflow: hidden; }
+.in { padding: 0 var(--sp-3); }
+.wk-d { padding: 0; cursor: pointer; }
+.wk-t { white-space: nowrap; }
+.last { margin-top: auto; }
+.toast.tq { padding: var(--sp-1) var(--sp-1) var(--sp-1) var(--sp-4); }
+.toast .btn { color: var(--on-hi); }
+.toast .btn:hover, .toast .btn:active { background: transparent; border-color: var(--on-hi); }
+
+.tl-i { padding-bottom: var(--sp-4); }
+.tl-i:last-child { padding-bottom: 0; }
+
+.btn.sm { padding: 0 var(--sp-4); }
+
+.pin { position: absolute; left: 0; right: 0; bottom: 0; padding: 0 var(--sp-6) var(--sp-8); display: flex; flex-direction: column; gap: var(--sp-2); }
+
+.qr { flex: none; padding: var(--sp-3); background: var(--sf1); border: 1px solid var(--edge); border-radius: var(--r2); }
+.qg { position: relative; display: grid; grid-template-columns: repeat(21, 8px); width: 168px; height: 168px; }
+.qc { width: 8px; height: 8px; }
+.qc.on { background: var(--ink); }
+.fd { position: absolute; width: 56px; height: 56px; background: var(--ink); }
+.fm { position: absolute; inset: 8px; background: var(--sf1); }
+.fc { position: absolute; inset: 8px; background: var(--ink); }
+.rc { display: grid; grid-template-columns: 1fr 1fr; grid-template-rows: repeat(4, 24px); grid-auto-flow: column; gap: var(--sp-2) var(--sp-4); }
+
+.mp { display: grid; grid-template-columns: 48px repeat(5, 48px); gap: var(--sp-1); }
+.mp .gm-c { font-size: 14px; line-height: 20px; }
+.mh { height: 24px; display: flex; align-items: center; justify-content: center; font-size: 14px; line-height: 20px; font-weight: 700; color: var(--ink2); }
+.ml { height: 48px; display: flex; align-items: center; justify-content: center; font-size: 14px; line-height: 20px; font-weight: 700; color: var(--ink2); }
+
+.kpis { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: var(--sp-6); }
+.cols { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: var(--sp-2); align-items: start; }
+.vrow { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: var(--sp-4); }
+.rq { display: flex; flex-direction: column; gap: var(--sp-1); padding: var(--sp-3); border-radius: var(--r2); background: var(--sf2); }
+.rq.late { background: var(--late-bg); }
+
+.gm .gm-c { height: 44px; }
+.gm-c.late { background: var(--late-bg); color: var(--ink); }
+.gm-c.tgt { box-shadow: 0 0 0 2px var(--bg), 0 0 0 4px var(--ink); }
+.gm-c.sw { width: 24px; height: 24px; flex: none; }
+.gm-hd-sp { min-height: 24px; }
+
+.plot { position: relative; flex: 1; min-width: 0; display: flex; border-bottom: 1px solid var(--edge); }
+.plot-d { height: 300px; }
+.plot-s { height: 72px; }
+.pc { position: relative; flex: 1; min-width: 0; }
+.pc.hr { box-shadow: inset 1px 0 0 var(--line); }
+.a { position: absolute; }
+.gl { position: absolute; left: 0; right: 0; height: 1px; background: var(--line); }
+.band { background: var(--tint2); }
+.bar { background: var(--accent); }
+.capl { background: var(--ink); height: 2px; }
+.flag { background: var(--ink); width: 2px; }
+.sv { border-top: 2px solid var(--st-way); background: var(--sf2); }
+.yc { position: relative; width: 40px; flex: none; }
+.yl { position: absolute; right: 0; }
+.frame { position: absolute; background: var(--glx); border-radius: 8px; }
+.sw { width: 16px; height: 12px; flex: none; }
+.main { padding-top: var(--sp-4); padding-bottom: var(--sp-4); }
+
+.trk { position: relative; height: 24px; border-radius: 8px; background: var(--sf2); }
+.tk { position: absolute; top: 0; bottom: 0; width: 1px; background: var(--line); }
+.ivl { position: absolute; top: 6px; height: 12px; border-radius: 8px; }
+.ivl-cur { background: var(--ink3); }
+.ivl-sc { background: var(--accent); }
+.dot { position: absolute; top: 2px; width: 20px; height: 20px; border-radius: 50%; background: var(--ink); border: 2px solid var(--sf1); }
+.axis { position: relative; height: 16px; margin-top: var(--sp-1); }
+.axl { position: absolute; top: 0; transform: translateX(-50%); }
+
+.cl { align-self: stretch; display: flex; align-items: center; padding: 0 var(--sp-2); }
+.cl.fri { background: var(--tint); box-shadow: inset 2px 0 0 var(--accent), inset -2px 0 0 var(--accent); }
+.cl.pick { outline: 2px solid var(--ink); outline-offset: -2px; font-weight: 700; }
+.cl.off { color: var(--ink3); }
+.hd { align-self: stretch; display: flex; flex-direction: column; justify-content: center; padding: 0 var(--sp-2); }
+.hd.fri { background: var(--tint); box-shadow: inset 2px 0 0 var(--accent), inset -2px 0 0 var(--accent); }
+
+.lk { position: relative; align-self: stretch; }
+.lk .ln { position: absolute; left: 11px; width: 2px; top: 0; bottom: 0; background: var(--ink2); }
+.lk .ln.first { top: 24px; }
+.lk .ln.last { bottom: auto; height: 24px; }
+.lk .ln.firstbad { top: 28px; }
+.lk .dt { position: absolute; left: 4px; top: 16px; width: 16px; height: 16px; border-radius: 50%; background: var(--ink); border: 2px solid var(--sf1); }
+.lk .dt.bad { top: 20px; background: var(--late-bg); border: 2px solid var(--st-late); }
+.brk { display: grid; grid-template-columns: 24px 56px 64px minmax(0, 1fr); column-gap: var(--sp-2); align-items: center; min-height: 32px; padding: 0 var(--sp-2); border-bottom: 1px solid var(--line); }
+
+/* adding a show/hide password control, not part of the design */
+.pw-wrap { position: relative; }
+.pw-wrap .inp { padding-right: var(--sp-12); }
+.pw-toggle { position: absolute; right: var(--sp-2); top: 0; bottom: 0; width: 40px; display: flex; align-items: center; justify-content: center; background: transparent; color: var(--ink2); cursor: pointer; }
+
+/* making .tp-col a scrolling wheel over its full range, same classes and look as the design's tap list */
+.tp-col { height: 152px; overflow-y: auto; scroll-snap-type: y mandatory; padding: 52px 0; flex: none; }
+.tp-col .tp-i { flex: none; scroll-snap-align: center; }
+
+/* resident billing additions: the pay sheet, invoice detail, payment
+   methods and history screens (R24-R33). These rules were local <style>
+   overrides inside each billing design screen rather than part of vk.css, so
+   they are collected here instead, unchanged from the design markup. */
+.c-link { font-weight: 700; color: var(--ink); text-decoration: underline; text-underline-offset: 4px; }
+.vk button.c-link { appearance: none; background: none; border: none; cursor: pointer; padding: 0; font: inherit; }
+/* letting .inv-row, .car-row and .pm-row double as real buttons (the
+   design used <a> for these rows, the app has no per-row route) without
+   picking up default button chrome; box-shadow and layout still come from
+   the shared rule in vk.css */
+.vk button.inv-row, .vk button.car-row, .vk button.pm-row {
+  appearance: none;
+  background: none;
+  border: none;
+  width: 100%;
+  text-align: left;
+  cursor: pointer;
+}
+.pay-pm .pm-row { min-height: 48px; padding: 0; }
+.pay-pm .pm-ic { width: 32px; height: 32px; border-radius: var(--r1); }
+.pay-pm .pm-ic .g { width: 24px; height: 24px; }
+.p-dis { opacity: 0.5; }
+.p-sheet { gap: var(--sp-3); }
+.p-addrow { min-height: 48px; justify-content: flex-start; }
+.p-form { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: var(--sp-3) var(--sp-2); }
+.p-form .wide { grid-column: 1 / 4; }
+.p-form .inp { min-width: 0; padding: 0 var(--sp-3); }
+.p-sheet .btn-quiet[disabled], .p-sheet .btn-quiet.p-dis { background: transparent; }
+.p-sheet .ap-row { min-height: 56px; padding: 0; box-shadow: none; }
+
+/* manager fleet additions (M09-M18): per-screen local styles from those
+   screens' own design styles, copied verbatim the same way the block above
+   does for earlier screens */
+.m-sh .step-body { display: flex; flex-direction: column; gap: var(--sp-4); }
+.m-sh .seg-i { min-height: 40px; }
+.m-sh .tbl .tr.sel { border-bottom-color: transparent; }
+.m-sh .sel-ic { display: block; width: 24px; height: 24px; border-radius: 50%; background: var(--sf3); flex: none; }
+.m-sh .tr.sel .sel-ic { background: var(--accent); box-shadow: inset 0 0 0 7px var(--accent), inset 0 0 0 12px var(--on-accent); }
+.m-sh .pm-row { box-shadow: none; padding: var(--sp-2) var(--sp-4); border-radius: var(--r2); background: var(--sf2); }
+.m-sh .pm-row.on { background: var(--tint2); }
+
+.m15-drop { background: var(--tint); border-radius: var(--r3); padding: var(--sp-6); display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; gap: var(--sp-3); }
+
+.m16 .imp-row:nth-child(even):not(.th) { background: var(--sf2); border-radius: var(--r1, 8px); }
+.m16 .imp-row.th { min-height: 32px; font-size: 12px; line-height: 16px; font-weight: 700; color: var(--ink2); }
+
+.m17 .inp { background: var(--sf2); }
+.m17 .seg-i { min-height: 40px; }
+
+.tbl .tr.sel { border-bottom-color: transparent; }
+.mgr .tbl .tr.sel, .mgr .tbl .tr.sel:nth-child(even):not(.th) { background: var(--tint); }
+
+/* manager billing additions (M19-M30): .figs, .sw2 and .attn-h are copied
+   verbatim from the M20/M26 screens' own design styles. .money-modal is
+   new: the design places each M23 dialog at a fixed demo offset to show
+   several side by side in one screenshot, but the running app opens one
+   dialog at a time and needs it centered over the viewport regardless of
+   where .scrim and .dlg sit in the page, so this wrapper gives every money
+   dialog and the step-up prompt one real position instead of a demo one. */
+.figs { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: var(--sp-6); }
+.figs > .mfig + .mfig { padding-left: var(--sp-6); box-shadow: -1px 0 0 var(--line); }
+.sw2 { width: 24px; height: 4px; flex: none; border-radius: 2px; }
+.attn-h { padding-bottom: var(--sp-1); }
+
+.money-modal { position: fixed; inset: 0; z-index: 60; display: flex; align-items: center; justify-content: center; padding: var(--sp-6); }
+.money-modal .scrim { position: fixed; }
+.money-modal .dlg { position: relative; width: 432px; max-width: 100%; max-height: calc(100vh - var(--sp-12)); overflow-y: auto; }
+
+/* .sheet has no height limit in vk.css, fine for a flat mockup image but
+   not for a real bottom sheet: a long form (the schedule sheet's day
+   picker, time wheels, car list and summary together) can run taller than
+   .phone itself, and .phone clips with overflow:hidden rather than
+   scrolling, leaving the save button permanently out of reach. Giving the
+   sheet its own scroll region fixes that without changing how any sheet
+   that already fits looks. */
+.sheet { max-height: calc(100% - var(--sp-12)); overflow-y: auto; }

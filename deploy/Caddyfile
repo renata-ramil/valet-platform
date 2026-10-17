@@ -1,0 +1,19 @@
+# Edge reverse proxy with automatic TLS (Let's Encrypt via ACME) for two
+# subdomains. Caddy obtains and renews certificates automatically; no
+# manual certbot step. Replace the domains and email below before
+# deploying, and set them via the DOMAIN / API_DOMAIN / ACME_EMAIL
+# environment variables read into this file (see docker-compose.prod.yml).
+
+{$DOMAIN} {
+	reverse_proxy frontend:80
+	encode gzip
+}
+
+{$API_DOMAIN} {
+	reverse_proxy backend:8000
+	encode gzip
+}
+
+{
+	email {$ACME_EMAIL}
+}

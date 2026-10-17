@@ -1,0 +1,12 @@
+{
+  "model_type": "eta",
+  "version": "20261009T011615533507",
+  "created_at": "2026-10-09T01:16:15.536514+00:00",
+  "training_data_hash": "732a84c52d800f1b",
+  "metrics": {
+    "held_out_coverage": 0.9109195402298851,
+    "held_out_width_seconds": 199.78817962141238,
+    "conformal_margin_seconds": 28.886331338153
+  },
+  "calibrated": true
+}

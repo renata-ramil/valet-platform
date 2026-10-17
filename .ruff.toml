@@ -1,0 +1,12 @@
+line-length = 100
+target-version = "py312"
+src = ["backend/app", "backend/policies", "backend/tests", "sim", "ml", "scripts"]
+include = ["backend/**/*.py", "sim/**/*.py", "ml/**/*.py", "scripts/**/*.py"]
+extend-exclude = ["backend/alembic/versions"]
+
+[lint]
+select = ["E", "F", "I", "UP", "B"]
+ignore = ["B008"]
+
+[format]
+quote-style = "double"
